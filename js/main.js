@@ -12,3 +12,18 @@ const searchInput = document.getElementById("search");
 const errorMessage = document.getElementById("error");
 const messageElement = document.getElementById("message");
 const recipeElement = document.getElementById("recipe");
+
+
+
+//Hanterar när användaren skickar in formuläret
+searchForm.addEventListener("submit", function (event) {
+
+// Förhindrar att formuläret skickas på vanligt sätt
+    event.preventDefault(); 
+
+    // Hämtar värdet från sökfältet
+    const searchTerm = searchInput.value.trim();
+
+    //Visar sökfrasen i konsolen
+    console.log(searchTerm);
+});
