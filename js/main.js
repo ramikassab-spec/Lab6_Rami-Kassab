@@ -13,8 +13,6 @@ const errorMessage = document.getElementById("error");
 const messageElement = document.getElementById("message");
 const recipeElement = document.getElementById("recipe");
 
-
-
 //Hanterar när användaren skickar in formuläret
 searchForm.addEventListener("submit", function (event) {
 
@@ -23,6 +21,15 @@ searchForm.addEventListener("submit", function (event) {
 
     // Hämtar värdet från sökfältet
     const searchTerm = searchInput.value.trim();
+
+    //Renar tidigare felmeddelande
+    errorMessage.textContent = "";
+
+    //Kontrollerar om sökfältet är tomt
+    if (searchTerm === "") {
+        errorMessage.textContent = "Vänligen ange en sökfras.";
+        return;
+    }
 
     //Visar sökfrasen i konsolen
     console.log(searchTerm);
