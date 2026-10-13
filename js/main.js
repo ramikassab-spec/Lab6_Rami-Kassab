@@ -37,8 +37,11 @@ searchForm.addEventListener("submit", function (event) {
 
 
 //Hämtar receptdata från API:et
-async function fetchRecipe(searchTerm) {
+async function fetchRecipe(searchTerm){
     const url = `https://dummyjson.com/recipes/search?q=${encodeURIComponent(searchTerm)}`;
+
+        // Rensar tidigare meddelanden
+        messageElement.textContent = "";
 
     const response = await fetch(url);
     const data = await response.json();
@@ -50,9 +53,8 @@ async function fetchRecipe(searchTerm) {
         recipeElement.innerHTML = "";
         return;
 
-        // Rensar tidigare meddelanden
-messageElement.textContent = "";
-    }
+
+}
 
     //Visar det första receptet i konsolen
     console.log(data.recipes[0]);
