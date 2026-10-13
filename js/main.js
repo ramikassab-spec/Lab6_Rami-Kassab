@@ -79,6 +79,20 @@ async function fetchRecipe(searchTerm){
     //Lägger bilden i artikel-elementet
     articleElement.appendChild(imageElement);
 
+    //skapar en behållare för receptinformationen
+    const recipeInfo = document.createElement("div");
+    recipeInfo.className = "recipe-info";
+
+    //Skapar ett stycke för antal portioner
+    const servingsElement = document.createElement("p");
+    servingsElement.textContent = "Antal portioner: " + recipe.servings;
+
+    //Lägger informationen i behållaren för receptinformationen
+    recipeInfo.appendChild(servingsElement);
+
+    //Lägger behållaren i artikeln
+    articleElement.appendChild(recipeInfo);
+
     //Lägger artikeln i receptsektionen på sidan
     recipeElement.appendChild(articleElement);
 }
