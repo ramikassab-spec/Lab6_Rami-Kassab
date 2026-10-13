@@ -102,6 +102,13 @@ async function fetchRecipe(searchTerm){
     //Lägger tillagningstiden i behållaren
     recipeInfo.appendChild(cookTimeElement);
 
+    //Skapar ett stycke för svårighetsgraden
+    const difficultyElement = document.createElement("p");
+    difficultyElement.textContent = "Svårighetsgrad: " + recipe.difficulty;
+
+    //Lägger svårighetsgraden i behållaren
+    recipeInfo.appendChild(difficultyElement);
+
     //Lägger behållaren i artikeln
     articleElement.appendChild(recipeInfo);
 
