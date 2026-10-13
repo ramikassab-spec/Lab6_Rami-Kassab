@@ -43,6 +43,17 @@ async function fetchRecipe(searchTerm) {
     const response = await fetch(url);
     const data = await response.json();
 
-    //Visar svaret från API:et i konsolen
-    console.log(data);
+
+    //Kontrollerar om några recept hittades
+    if (data.recipes.length === 0) {
+        messageElement.textContent = "Inga recept hittades för sökfrasen: " + searchTerm;
+        recipeElement.innerHTML = "";
+        return;
+
+        // Rensar tidigare meddelanden
+messageElement.textContent = "";
+    }
+
+    //Visar det första receptet i konsolen
+    console.log(data.recipes[0]);
 }
