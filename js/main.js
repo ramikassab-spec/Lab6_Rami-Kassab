@@ -112,6 +112,26 @@ async function fetchRecipe(searchTerm){
     //Lägger behållaren i artikeln
     articleElement.appendChild(recipeInfo);
 
+    //Skapar en rubrik för ingredienserna
+    const ingredientsTitle = document.createElement("h4");
+    ingredientsTitle.textContent = "Ingredienser:";
+
+    //Lägger ingredienserna i artikeln
+    articleElement.appendChild(ingredientsTitle);
+
+    //Skapar en lista för ingredienserna
+    const ingredientsList = document.createElement("ul");
+
+    //Går igenom varje ingrediens i receptet och skapar ett listobjekt för varje ingrediens
+    recipe.ingredients.forEach(function (ingredient) {
+        const ingredientItem = document.createElement("li");
+        ingredientItem.textContent = ingredient;
+        ingredientsList.appendChild(ingredientItem);
+    });
+
+    //Lägger listan med ingredienser i artikeln
+    articleElement.appendChild(ingredientsList);
+
     //Lägger artikeln i receptsektionen på sidan
     recipeElement.appendChild(articleElement);
 }
