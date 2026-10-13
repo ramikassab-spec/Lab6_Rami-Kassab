@@ -22,7 +22,7 @@ searchForm.addEventListener("submit", function (event) {
     // Hämtar värdet från sökfältet
     const searchTerm = searchInput.value.trim();
 
-    //Renar tidigare felmeddelande
+    //Rensar tidigare felmeddelande
     errorMessage.textContent = "";
 
     //Kontrollerar om sökfältet är tomt
@@ -31,6 +31,18 @@ searchForm.addEventListener("submit", function (event) {
         return;
     }
 
-    //Visar sökfrasen i konsolen
-    console.log(searchTerm);
+    //Hämtar receptdata från API:et med den angivna sökfrasen
+    fetchRecipe(searchTerm)
 });
+
+
+//Hämtar receptdata från API:et
+async function fetchRecipe(searchTerm) {
+    const url = `https://dummyjson.com/recipes/search?q=${encodeURIComponent(searchTerm)}`;
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    //Visar svaret från API:et i konsolen
+    console.log(data);
+}
