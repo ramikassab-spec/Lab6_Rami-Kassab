@@ -70,6 +70,15 @@ async function fetchRecipe(searchTerm){
     //Lägger rubriken i artikel-elementet
     articleElement.appendChild(titleElement);
 
-    //Lägger rubriken i artikel-elementet
+    //skapar en bild för receptet
+    const imageElement = document.createElement("img");
+    
+    //Hämtar bildens URL från receptdata och sätter den som källan för bilden
+    imageElement.src = recipe.image;
+
+    //Lägger bilden i artikel-elementet
+    articleElement.appendChild(imageElement);
+
+    //Lägger artikeln i receptsektionen på sidan
     recipeElement.appendChild(articleElement);
 }
