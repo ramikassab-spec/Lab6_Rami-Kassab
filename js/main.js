@@ -90,6 +90,18 @@ async function fetchRecipe(searchTerm){
     //Lägger informationen i behållaren för receptinformationen
     recipeInfo.appendChild(servingsElement);
 
+    //Skapar ett stycke för förberedelsetiden
+    const prepTimeElement = document.createElement("p");
+    prepTimeElement.textContent = "Förberedelsetid: " + recipe.prepTimeMinutes + " minuter";
+
+    //Lägger förberedelsetiden i behållaren
+    recipeInfo.appendChild(prepTimeElement);
+    const cookTimeElement = document.createElement("p");
+    cookTimeElement.textContent = "Tillagningstid: " + recipe.cookTimeMinutes + " minuter";
+
+    //Lägger tillagningstiden i behållaren
+    recipeInfo.appendChild(cookTimeElement);
+
     //Lägger behållaren i artikeln
     articleElement.appendChild(recipeInfo);
 
