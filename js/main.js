@@ -52,10 +52,24 @@ async function fetchRecipe(searchTerm){
         messageElement.textContent = "Inga recept hittades för sökfrasen: " + searchTerm;
         recipeElement.innerHTML = "";
         return;
+    }
 
+    // Hämtar det första receptet
+    const recipe = data.recipes[0];
+    
+    //Tar bort tidigare recept från sidan
+    recipeElement.innerHTML = "";
 
-}
+    // Skapar ett nytt artikel-element för att visa receptet
+    const articleElement = document.createElement("article");
 
-    //Visar det första receptet i konsolen
-    console.log(data.recipes[0]);
+    //Skapar en ny rubrik för receptet
+    const titleElement = document.createElement("h3");
+    titleElement.textContent = recipe.name;
+
+    //Lägger rubriken i artikel-elementet
+    articleElement.appendChild(titleElement);
+
+    //Lägger rubriken i artikel-elementet
+    recipeElement.appendChild(articleElement);
 }
