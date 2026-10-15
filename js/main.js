@@ -67,7 +67,24 @@ async function fetchRecipe(searchTerm){
     // Hämtar det första receptet
     const recipe = data.recipes[0];
     
-    //Tar bort tidigare recept från sidan
+   //Visar receptet på sidan
+    displayRecipe(recipe);
+
+    }catch (error) {
+        //tar bort tidigare recept från sidan
+        recipeElement.innerHTML = "";
+
+        //Visar felmeddelandet på sidan
+        messageElement.textContent = 
+        "Ett fel uppstod vid hämtning av receptdata. Vänligen försök igen senare.";
+        //Visar information om felet i konsolen för felsökning
+        console.error("Fel vid hämtning av receptdata:", error);
+    }
+}
+
+//Skapar och visar receptet på sidan
+function displayRecipe(recipe) {
+     //Tar bort tidigare recept från sidan
     recipeElement.innerHTML = "";
 
     // Skapar ett nytt artikel-element för att visa receptet
@@ -167,14 +184,4 @@ async function fetchRecipe(searchTerm){
     //Lägger artikeln i receptsektionen på sidan
     recipeElement.appendChild(articleElement);
 
-
-    }catch (error) {
-        //tar bort tidigare recept från sidan
-        recipeElement.innerHTML = "";
-
-        //Visar felmeddelandet på sidan
-        messageElement.textContent = 
-        "Ett fel uppstod vid hämtning av receptdata. Vänligen försök igen senare.";
-        //Visar information om felet i konsolen för felsökning
-        console.error("Fel vid hämtning av receptdata:", error);
-    }}
+}
