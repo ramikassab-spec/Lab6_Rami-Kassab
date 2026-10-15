@@ -82,6 +82,8 @@ async function fetchRecipe(searchTerm){
 
     //skapar en bild för receptet
     const imageElement = document.createElement("img");
+    //Sätter alt-texten för bilden
+    imageElement.alt = 'Bild av ' + recipe.name;
     
     //Hämtar bildens URL från receptdata och sätter den som källan för bilden
     imageElement.src = recipe.image;
