@@ -43,9 +43,19 @@ async function fetchRecipe(searchTerm){
         // Rensar tidigare meddelanden
         messageElement.textContent = "";
 
-    const response = await fetch(url);
-    const data = await response.json();
-
+    try {
+        //Hämtar data från API:et
+        const response = await fetch(url);
+        //Kontrollerar om svaret är OK
+        if (!response.ok) {
+            throw new Error("Något gick fel vid hämtning av receptdata.");
+        }
+        //Konverterar svaret från JSON till Javaskript-data
+        const data = await response.json();
+        //kontrollerar att svaret innehåller receptdata
+        if(!data.recipes || !Array.isArray(data.recipes)) {
+            throw new Error("Receptdata saknas i svaret från API:et.");
+        }
 
     //Kontrollerar om några recept hittades
     if (data.recipes.length === 0) {
@@ -154,4 +164,15 @@ async function fetchRecipe(searchTerm){
 
     //Lägger artikeln i receptsektionen på sidan
     recipeElement.appendChild(articleElement);
-}
+
+
+    }catch (error) {
+        //tar bort tidigare recept från sidan
+        recipeElement.innerHTML = "";
+
+        //Visar felmeddelandet på sidan
+        messageElement.textContent = 
+        "Ett fel uppstod vid hämtning av receptdata. Vänligen försök igen senare.";
+        //Visar information om felet i konsolen för felsökning
+        console.error("Fel vid hämtning av receptdata:", error);
+    }}
